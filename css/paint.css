@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body {
+    /* don't set height, it will use the size of the inner element (canvas), 
+        which works on chrome mobile (if I set the hight to be 100% or 100vh
+        you can scroll to make the navigation bar go away, which makes it 
+        pretty much impossible to paint */
+    touch-action: none;
+    background: red;
+}
+
+canvas {
+    background: white;
+}
