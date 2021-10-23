@@ -27,6 +27,9 @@ function down(x, y) {
 }
 
 function move(x, y) {
+    if (!prev)
+        return;
+    // TODO: if too close to menu, hide menu
     ctx.beginPath();
     ctx.moveTo(...prev);
     ctx.lineTo(x, y);
@@ -41,8 +44,12 @@ c.addEventListener("mousedown", event => {
 });
 
 c.addEventListener("mousemove", event => {
+    // FIXME: if, before you draw anything, you press mouse down on menu, and then drag over to canvas, it throws an error
+    // This may not be fixed when I implement dragging the menu because you can still drag from a parent
     if (event.buttons === 1)
         move(event.clientX, event.clientY);
+    else if (event.buttons !== 1)
+        prev = undefined;
 });
 
 c.addEventListener("touchstart", event => {
